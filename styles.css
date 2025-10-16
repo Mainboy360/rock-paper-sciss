@@ -3,6 +3,17 @@
    margin: 0px;
 }
 
+
+
+.libre-franklin {
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 .game-container {
    display: flex;
    justify-content: space-evenly;
