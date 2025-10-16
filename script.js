@@ -1,42 +1,39 @@
 
+let scorePlayer = 0;
+let  scoreComputer = 0;
+let draw = 0;
 
-// computer generation of Rock paper and scissors
- let    cScore = 0;
-let      pScore = 0;
 
-let mgs = document.querySelector("#mgs")
-
+// computer choice 
 
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random () * 3) + 1;
+    let computerChoice = Math.floor(Math.random() * 3) + 1;
 
     if(computerChoice === 1) {
-        return "rock"
+        return "rock";
 
     } else if(computerChoice === 2) {
-        return "paper"
+        return "paper";
 
     } else {
-        return "scissors"
+       return "scissors" 
     }
 }
 
 
-
-
-// FUnction handling players input
+// Players choice input
 
 function getPlayerChoice() {
-    let playersChoice = prompt("Enter Rock or Paper or Scissors").toLowerCase();
+    let playerChoice = prompt("Enter Rock or Paper or Scissors").toLowerCase();
 
-    if(playersChoice === "rock") {
-        return "rock"
+    if(playerChoice === "rock") {
+        return "rock";
+        
+    } else if(playerChoice === "paper") {
+        return "paper";
 
-    } else if(playersChoice === "paper") {
-        return "paper"
-
-    } else if(playersChoice === "scissors") {
-        return "scissors"
+    } else if(playerChoice === "scissors") {
+        return "scissors";
 
     } else {
         return "Invalid input"
@@ -44,67 +41,54 @@ function getPlayerChoice() {
 }
 
 
-
-// collection of both player and computer choices
+// player and computer play
 
 function playGame(player, computer) {
-    // let mgs = document.querySelector("#mgs")
-    let computerScore = document.querySelector("#compScore");
+    let message = document.querySelector("#message");
     let playerScore = document.querySelector("#playerScore");
-
-
+    let computerScore = document.querySelector("#compScore");
+    let draws = document.querySelector("#draw");
 
     if(player === "rock" && computer === "scissors") {
-        mgs.textContent = "Player wins!!🎉 Rock beats Scissors";
-        playerScore.textContent = ++pScore
-        // return
+        message.textContent = "Player wins!! 🎉 Rock beats Scissors";
+        playerScore.textContent = ++scorePlayer;
 
     } else if(player === "scissors" && computer === "paper") {
-        mgs.textContent = "Player wins!! 🎉 Scissors cuts Paper";
-        playerScore.textContent = ++pScore;
-        // return
+        message.textContent = "Player wins!! 🎉Scissors cuts Paper";
+        playerScore.textContent = ++scorePlayer;
 
     } else if(player === "paper" && computer === "rock") {
-        mgs.textContent = "Player win!! 🎉 Paper wraps Rock";
-        playerScore.textContent = ++pScore;
-        // return
+        message.textContent = "Player wins!! 🎉 Paper wraps Rock";
+        playerScore.textContent = ++scorePlayer;
 
     } else if(computer === "rock" && player === "scissors") {
-       computerScore.textContent =  mgs.textContent = "Computer wins!! 🎉 Rock beats Scissors";
-        // return
+        message.textContent = "Computer wins!! 🎉 Rock beats Scissors";
+        computerScore.textContent = ++scoreComputer;
 
-    } else if (computer === "scissors" && player === "paper" ) {
-        mgs.textContent = "Computer wins!! 🎉 Scissors cuts Paper";
-        computerScore.textContent = ++cScore
-        // return
+    } else if(computer === "scissors" && player === "paper") {
+        message.textContent = "Computer wins!! 🎉 Scissors cuts Paper";
+        computerScore.textContent = ++scoreComputer;
 
-    } else if (computer === "paper" && player === "rock" ) {
-        mgs.textContent = "Computer wins!! 🎉 Paper wraps Rock";
-        computerScore.textContent = ++cScore
-        // return
+    } else if(computer === "paper" && player === "rock") {
+        message.textContent = "Computer wins!! 🎉 Paper wraps Rock";
+        computerScore.textContent = ++scoreComputer;
 
-    } else if(player === computer) {
-        mgs.textContent = "It's draw🤝 Nice one";
+    } else if (player === computer) {
+        message.textContent = "It's a draw 🤝 Nice one."
+        draws.textContent = ++draw;
 
     } else {
-        mgs.textContent = "Incorrect input"
+        message.textContent = "Enter Rock or Paper or Scissors to play game"
+        
+    }
+ }
+
+
+
+function playROund() {
+    for(i = 0; i < 5; i++) {
+        playGame(getPlayerChoice(), getComputerChoice())
     }
 }
 
-// playGame(getPlayerChoice(), getComputerChoice());
-
-
-
-function playRound() {
-    for(i = 0; i < 5; i++) {
-        playGame(getPlayerChoice(), getComputerChoice());   
-
- }
-
-    // if
-
-}
-
-
-playRound()
-
+playROund()
