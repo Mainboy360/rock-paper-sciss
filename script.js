@@ -2,7 +2,10 @@
 let scorePlayer = 0;
 let  scoreComputer = 0;
 let draw = 0;
-
+let message = document.querySelector("#message");
+let playerScore = document.querySelector("#playerScore");
+let computerScore = document.querySelector("#compScore");
+let draws = document.querySelector("#draw");
 
 // computer choice 
 
@@ -24,7 +27,8 @@ function getComputerChoice() {
 // Players choice input
 
 function getPlayerChoice() {
-    let playerChoice = prompt("Enter Rock or Paper or Scissors").toLowerCase();
+    let playerChoice = prompt("Enter Rock or Paper or Scissors")/*.trim().toLowerCase(); */
+
 
     if(playerChoice === "rock") {
         return "rock";
@@ -35,6 +39,7 @@ function getPlayerChoice() {
     } else if(playerChoice === "scissors") {
         return "scissors";
 
+
     } else {
         return "Invalid input"
     }
@@ -44,51 +49,126 @@ function getPlayerChoice() {
 // player and computer play
 
 function playGame(player, computer) {
-    let message = document.querySelector("#message");
-    let playerScore = document.querySelector("#playerScore");
-    let computerScore = document.querySelector("#compScore");
-    let draws = document.querySelector("#draw");
 
+ 
     if(player === "rock" && computer === "scissors") {
         message.textContent = "Player wins!! 🎉 Rock beats Scissors";
         playerScore.textContent = ++scorePlayer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+        
+        let agree = confirm("Do you want to play again?")
+  
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("Game canceled")
+        }
 
     } else if(player === "scissors" && computer === "paper") {
         message.textContent = "Player wins!! 🎉Scissors cuts Paper";
         playerScore.textContent = ++scorePlayer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+        let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+
+            alert("game canceled")
+        }
+
 
     } else if(player === "paper" && computer === "rock") {
         message.textContent = "Player wins!! 🎉 Paper wraps Rock";
         playerScore.textContent = ++scorePlayer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+        let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
+
 
     } else if(computer === "rock" && player === "scissors") {
         message.textContent = "Computer wins!! 🎉 Rock beats Scissors";
         computerScore.textContent = ++scoreComputer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+        let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
+
 
     } else if(computer === "scissors" && player === "paper") {
         message.textContent = "Computer wins!! 🎉 Scissors cuts Paper";
         computerScore.textContent = ++scoreComputer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+        let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
 
     } else if(computer === "paper" && player === "rock") {
         message.textContent = "Computer wins!! 🎉 Paper wraps Rock";
         computerScore.textContent = ++scoreComputer;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+                let agree = confirm("Do you want to play again")
+
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
 
     } else if (player === computer) {
         message.textContent = "It's a draw 🤝 Nice one."
         draws.textContent = ++draw;
+        alert(`Computer: ${computerScore.textContent}  \n Player: ${playerScore.textContent} \n Draws: ${draws.textContent}`)
+
+                let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
 
     } else {
         message.textContent = "Enter Rock or Paper or Scissors to play game"
         
+                let agree = confirm("Do you want to play again")
+
+        if(agree === true) {
+            playGame(getPlayerChoice(), getComputerChoice())
+
+        } else {
+            alert("game canceled")
+        }
+        
     }
  }
 
+ playGame(getPlayerChoice(), getComputerChoice())
 
-
-function playROund() {
-    for(i = 0; i < 5; i++) {
-        playGame(getPlayerChoice(), getComputerChoice())
-    }
-}
-
-playROund()
